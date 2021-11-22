@@ -1,37 +1,60 @@
-function getPilihanComputer(){
-    const comp = innerHTML = Math.random();
-    if(comp < 0.34) return 'kertas';
-    if(comp > 0.34 && comp < 0.67) return 'batu';
-    return 'gunting';
-}
-
-function getHasil(comp, player) {
-    if( player == comp ) return 'SERI!';
-     if( player == 'kertas' ) return ( comp == 'batu' ) ? 'MENANG!' : 'KALAH!';
-     if( player == 'batu' ) return ( comp == 'kertas' ) ? 'KALAH!' : 'MENANG!';
-     if( player == 'gunting' ) return ( comp == 'batu' ) ? 'KALAH' : 'MENANG!';
-
-}
-
-const pKertas = document.querySelector('.kertas');
-pKertas.addEventListener('click', function() {
-   const pilihanComputer = getPilihanComputer();
-   const pilihanPlayer = pKertas.className;
-    const hasil = getHasil(pilihanComputer, pilihanPlayer);
-    const hasilComputer = document.getElementById("area-computer");
-    hasilComputer.setAttribute = 'src', 'img/' + pilihanComputer + '.png';
+function getPilihan(user) {
+    var pilihan = Math.floor(Math.random() * 3) + 1;
+    var comp = "";
+    var hasil = "";
     
-
-    pKertas.addEventListener('click', function(){
-        pKertas.style.backgroundColor = '#ffdeb0'
-    })
-
-    hasilComputer.addEventListener('change', (event) => {
-        hasilComputer.style.backgroundColor = '#ffdeb0';
-    })
-
-    const info = document.querySelector('.info');
-    info.innerHTML = hasil;
-
-});
-
+    
+    switch (pilihan) {
+        case 1:
+            comp = "PAPER"
+            console.log(comp)
+           
+            if (user == "scissor") {
+                hasil = "YOU WIN!";
+            } else if (user == "rock") {
+                hasil = "YOU LOSE!";
+            } else {
+                hasil = "DRAW";
+            }
+            console.log(hasil);
+            break;
+    
+        case 2:
+            comp = "SCISSOR";
+            console.log(comp)
+    
+            if (user == "rock") {
+                hasil = "YOU WIN!";
+            } else if (user == "paper") {
+                hasil = "YOU LOSE!";
+            } else {
+                hasil = "DRAW";
+            }
+            console.log(hasil);
+            break;
+    
+        case 3:
+            comp = "ROCK";
+            console.log(comp)
+    
+            if (user == "paper") {
+                hasil = "YOU WIN!";
+            } else if (user == "scissor") {
+                hasil = "YOU LOSE!";
+            } else {
+                hasil = "DRAW";
+            }
+            console.log(hasil);
+            break;
+        }
+        
+        const info = document.querySelector('.info');
+        info.innerHTML = hasil;
+        document.getElementById('comp').innerHTML = comp;
+    }
+    
+    
+    
+    
+    
+    
