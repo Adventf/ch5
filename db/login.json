@@ -1,0 +1,17 @@
+[
+    {
+      "id" : 1,
+      "email": "baskara@gmail.com",
+      "password": "hindia21"
+    },
+    {
+      "id" : 2,
+      "email": "tulus@gmail.com",
+      "password": "gajah31"
+    },
+    {
+      "id" : 3,
+      "email": "pamungkas@gmail.com",
+      "password": "tothebone21"
+    }
+]
