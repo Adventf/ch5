@@ -1,14 +1,10 @@
 const express = require('express');
 const router = express.Router();
-let login = require('./db/login.json');
+let signup = require('./db/signup.json');
+const users = require("./db/login.json");
+const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
-const users =[];
-
-// app.use(router);
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false}));
-
 
 //menggunakan ejs
 app.set('view engine', 'ejs');
@@ -27,16 +23,16 @@ app.get('/login', (req, res) => {
     res.render('login');
   })
 
-  app.get('/play', (req, res) => {
+app.get('/play', (req, res) => {
     res.render('play');
   })
 
-app.get('/api/login', (req, res) => {
-  res.status(200).json(login);
+app.get('/api/signup', (req, res) => {
+  res.status(200).json(signup);
 });
 
-app.get('/api/login/:id', (req, res) => {
-  const akun = login.find(i => i.id === + req.params.id);
+app.get('/api/signup/:id', (req, res) => {
+  const akun = signup.find(i => i.id === + req.params.id);
   res.status(200).json(akun);
 });
 
@@ -56,20 +52,24 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.get("/jumlah", (req, res) => {
-  res.send(`Jumlah user ${users.length}`);
-})
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get("/login", (req, res) => {
-  res.render("login")
-})
+app.post("/login", (req, res) => {
+  // Insert Login Code Here
+  let username = req.body.username;
+  let password = req.body.password;
+  let gender = req.body.gender;
 
-app.post('/login', (req, res) => {
-  const { email, password } = req.body;
-
-  users.push({ email, password });
-  res.redirect('/jumlah');
-})
+  const user = users.find(
+    (item) =>
+      item.username === username &&
+      item.password === password &&
+      item.gender === gender
+  );
+  if (user) {
+    res.status(200).redirect("/play");
+  } 
+});
 
 app.use((req, res) => {
   res.status(404).json({

@@ -2,16 +2,21 @@
     {
       "id" : 1,
       "email": "baskara@gmail.com",
-      "password": "hindia21"
+      "password": "hindia"
     },
     {
       "id" : 2,
       "email": "tulus@gmail.com",
-      "password": "gajah31"
+      "password": "gajah"
     },
     {
       "id" : 3,
       "email": "pamungkas@gmail.com",
-      "password": "tothebone21"
+      "password": "tothebone"
+    },
+    {
+      "id" : 4,
+      "email": "danila@gmail.com",
+      "password": "berdistraksi"
     }
 ]
